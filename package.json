@@ -1,0 +1,28 @@
+{
+  "name": "polymer-markdown-api",
+  "version": "1.0.0",
+  "description": "Generates markdown out of element analysis.json file, so it can be used on github or other place",
+  "main": "polymer-markdown-api.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/moduware/polymer-markdown-api.git"
+  },
+  "keywords": [
+    "Polymer",
+    "Documentation",
+    "Markdown",
+    "API"
+  ],
+  "author": "Moduware PTY LTD",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/moduware/polymer-markdown-api/issues"
+  },
+  "homepage": "https://github.com/moduware/polymer-markdown-api#readme",
+  "dependencies": {
+    "polymer-analyzer": "^2.7.0"
+  }
+}
