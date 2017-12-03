@@ -1,9 +1,7 @@
 const {Analyzer, FSUrlLoader} = require('polymer-analyzer');
 
-
-
 let analyzer = new Analyzer({
-  urlLoader: new FSUrlLoader('/Users/alexchernov/GitHub/morph-button'),
+  urlLoader: new FSUrlLoader('/Users/Clint/Projects/moduware/morph-button'),
 });
 
 // This path is relative to the package root
