@@ -1,4 +1,5 @@
 const {Analyzer, FSUrlLoader} = require('polymer-analyzer');
+var markdown = "";
 
 let analyzer = new Analyzer({
   urlLoader: new FSUrlLoader('/Users/Clint/Projects/moduware/morph-button'),
@@ -12,17 +13,21 @@ analyzer.analyze(['./morph-button.html']).then((analysis) => {
   const [MorphButton, ] = analysis.getFeatures(
       {kind: 'element', id: 'morph-button', externalPackages: true});
   
-  let markdown = "";
-
+  
+  
   if (MorphButton) {
-    markdown += "## Properties\n";
-    for (const [name, property] of MorphButton.properties) {
-      markdown += `**${property.name}**: _${property.type}_ ${typeof(property.default) == 'undefined'?'':' = \`\`' + property.default + '\`\`'}\n\n
-      ${property.description}\n\n\n `;
-    }
+    propertyFormatter(MorphButton);
   } else {
     console.log(`File don't define or import morph-button.`);
   }
 
   console.log(markdown);
 });
+
+function propertyFormatter(element) {
+  markdown += "## Properties\n";
+  for (const [name, property] of element.properties) {
+    markdown += `**${property.name}**: _${property.type}_ ${typeof (property.default) == 'undefined' ? '' : ' = \`\`' + property.default + '\`\`'}\n\n
+      ${property.description}\n\n\n `;
+  }
+}
