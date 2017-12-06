@@ -1,3 +1,5 @@
+#! /usr/bin/env node
+
 const {Analyzer, FSUrlLoader} = require('polymer-analyzer');
 
 const myFile = process.argv[2];
@@ -37,8 +39,4 @@ function propertyFormatter(element) {
     markdown += `**${property.name}**: _${property.type}_ ${typeof (property.default) == 'undefined' ? '' : ' = \`\`' + property.default + '\`\`'}\n\n
       ${property.description}\n\n\n `;
   }
-}
-
-exports.printMsg = function() {
-  console.log('This is from polymer-markdown-api');
 }
