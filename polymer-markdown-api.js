@@ -37,7 +37,7 @@ if (myFile) {
 function propertyFormatter(element) {
   markdown += "## Properties\n\n";
 
-  for (const [name, property] of element.methods) {
+  for (const [name, property] of element.properties) {
     markdown += `**${property.name}**: _${property.type}_ ${typeof (property.default) == 'undefined' ? '' : ' = \`\`' + property.default + '\`\`'}\n\n${property.description}\n\n`;
   }
 }
