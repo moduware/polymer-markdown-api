@@ -7,6 +7,7 @@ var markdown = "";
 
 var myArgs = process.argv.slice(2); // strip 2 default args we don't need
 var myFile = myArgs[0];
+const elementId = myFile.substr(0, myFile.lastIndexOf('.')) || myFile;
 
 let analyzer = new Analyzer({
   urlLoader: new FSUrlLoader(baseUrl),
@@ -20,7 +21,7 @@ console.log(`and file pass in is <${myFile}>\n`);
 if (myFile) {
   analyzer.analyze([myFile]).then((analysis) => {
     const [MorphButton, ] = analysis.getFeatures(
-        {kind: 'element', id: 'morph-button', externalPackages: true});
+      { kind: 'element', id: elementId, externalPackages: true});
     
     if (MorphButton) {
       propertyFormatter(MorphButton);
