@@ -32,9 +32,9 @@ const analyzer = new Analyzer({
   urlLoader: new FSUrlLoader(targetFileDir),
 });
 
-var markdown = '';
 
 analyzer.analyze([targetFileBaseName]).then((analysis) => {
+  let markdownOutput = '';
   const [ElementClass, ] = analysis.getFeatures(
     { kind: 'element', id: elementId, externalPackages: true});
   
@@ -43,28 +43,32 @@ analyzer.analyze([targetFileBaseName]).then((analysis) => {
     return;
   }
 
-  propertyFormatter(ElementClass);
-  methodFormatter(ElementClass);
-  fs.writeFileSync(outputName, markdown);
+  markdownOutput += propertyFormatter(ElementClass);
+  markdownOutput += methodFormatter(ElementClass);
+  fs.writeFileSync(outputName, markdownOutput);
   console.log(`Markdown saved to ${outputName}.`);
 
 });
 
 function methodFormatter(element) {
+  let markdown = '';
   markdown += '## Methods\n\n';
-  
+
   for(const [name, method] of element.methods) {
     let argumentNames = createStringOfArgumentNames(method.params);
     markdown += `**${method.name}(${argumentNames})**: _${method.return.type}_ \n\n${method.description}\n\n\n`;
   }
+  return markdown;
 }
 
 function propertyFormatter(element) {
+  let markdown = '';
   markdown += '## Properties\n\n';
 
   for (const [name, property] of element.properties) {
     markdown += `**${property.name}**: _${property.type}_ ${typeof (property.default) == 'undefined' ? '' : ' = \`\`' + property.default + '\`\`'}\n\n${property.description}\n\n`;
   }
+  return markdown;
 }
 
 function createStringOfArgumentNames(argumentsArray) {
