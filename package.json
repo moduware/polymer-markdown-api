@@ -29,6 +29,7 @@
   },
   "homepage": "https://github.com/moduware/polymer-markdown-api#readme",
   "dependencies": {
+    "commander": "^2.12.2",
     "polymer-analyzer": "^2.7.0"
   }
 }
