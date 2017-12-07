@@ -18,6 +18,8 @@
     "Polymer",
     "Documentation",
     "Markdown",
+    "Generator",
+    "Components",
     "API"
   ],
   "author": "Moduware PTY LTD",
