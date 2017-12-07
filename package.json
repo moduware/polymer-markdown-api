@@ -8,7 +8,7 @@
   },
   "preferGlobal": true,
   "bin": {
-    "Generate": "polymer-markdown-api.js"
+    "polymer-md": "polymer-markdown-api.js"
   },
   "repository": {
     "type": "git",
