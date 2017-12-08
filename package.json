@@ -4,7 +4,7 @@
   "description": "Generates markdown out of element analysis.json file, so it can be used on github or other place",
   "main": "polymer-markdown-api.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha"
   },
   "preferGlobal": true,
   "bin": {
@@ -31,5 +31,8 @@
   "dependencies": {
     "commander": "^2.12.2",
     "polymer-analyzer": "^2.7.0"
+  },
+  "devDependencies": {
+    "mocha": "^4.0.1"
   }
 }
