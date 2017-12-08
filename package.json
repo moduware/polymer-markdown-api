@@ -33,6 +33,7 @@
     "polymer-analyzer": "^2.7.0"
   },
   "devDependencies": {
-    "mocha": "^4.0.1"
+    "mocha": "*",
+    "chai": "*"
   }
 }
