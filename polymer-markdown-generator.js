@@ -3,8 +3,9 @@ const VERSION = '1.0.0';
 const {Analyzer, FSUrlLoader} = require('polymer-analyzer');
 const program = require('commander');
 const fs = require('fs');
-const baseUrl = process.cwd(); // gets the path of the current directory
+const methodFormatter = require('./method-formatter');
 
+const baseUrl = process.cwd(); // gets the path of the current directory
 module.exports = {
   _methodFormatter: methodFormatter,
   _propertyFormatter: propertyFormatter,
@@ -54,17 +55,6 @@ analyzer.analyze([targetFileBaseName]).then((analysis) => {
   console.log(`Markdown saved to ${outputName}.`);
 
 });
-
-function methodFormatter(element) {
-  let markdown = '';
-  markdown += '## Methods\n\n';
-
-  for(const [name, method] of element.methods) {
-    let argumentNames = createStringOfArgumentNames(method.params);
-    markdown += `**${method.name}(${argumentNames})**: _${method.return.type}_ \n\n${method.description}\n\n\n`;
-  }
-  return markdown;
-}
 
 function propertyFormatter(element) {
   let markdown = '';
