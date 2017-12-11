@@ -2,7 +2,6 @@ const expect = require('chai').expect;
 var generator = require('../polymer-markdown-generator.js');
 
 describe('Polymer Markdown Generator', function() {
-  
   context('methodFormatter', function() {
     it('test for method formatter output', function() {
       var arr = [];
@@ -12,6 +11,7 @@ describe('Polymer Markdown Generator', function() {
 
     it('should have a methodFormatter Method', function() {
       expect(typeof generator).to.be.equal('object');
+      expect(typeof generator._methodFormatter).to.be.equal('function');
     });
   });
   
