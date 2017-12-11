@@ -5,8 +5,11 @@ const program = require('commander');
 const fs = require('fs');
 const baseUrl = process.cwd(); // gets the path of the current directory
 
-// This is the top part of our md file
-console.log(`Markdown Generator ${VERSION}\n`);
+module.exports = {
+  _methodFormatter: methodFormatter,
+  _propertyFormatter: propertyFormatter,
+  _createStringOfArgumentNames: createStringOfArgumentNames
+};
 
 program
 .version(VERSION)
@@ -26,6 +29,8 @@ const targetFileDir = targetFile.replace(targetFileBaseName, '');
 const elementId = program.elementName || targetFileBaseName.substr(0, targetFileBaseName.lastIndexOf('.'));
 const outputName = program.outputFile || 'REFERENCE.md';
 
+// This is the top part of our md file
+console.log(`Markdown Generator ????? ${VERSION}\n`);
 console.log(`Processing <${targetFile}>\n`);
 
 const analyzer = new Analyzer({
