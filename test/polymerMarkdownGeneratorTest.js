@@ -16,7 +16,10 @@ describe('Polymer Markdown Generator', function() {
   });
   
   context('propertyFormatter', function() {
-    it('test for property formatter output');
+    it('test for property formatter output', function() {
+      expect(typeof generator).to.be.equal('object');
+      expect(typeof generator._propertyFormatter).to.be.equal('function');
+    });
   });
 
   context('createStringOfArguments', function(){
