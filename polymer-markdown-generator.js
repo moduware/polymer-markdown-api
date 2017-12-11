@@ -4,7 +4,8 @@ const {Analyzer, FSUrlLoader} = require('polymer-analyzer');
 const program = require('commander');
 const fs = require('fs');
 const methodFormatter = require('./method-formatter');
-const propertyFormatter = require('./method-formatter');
+const propertyFormatter = require('./property-formatter');
+const createStringOfArgumentNames = require('./create-string-of-argument-names');
 
 const baseUrl = process.cwd(); // gets the path of the current directory
 module.exports = {
@@ -56,14 +57,3 @@ analyzer.analyze([targetFileBaseName]).then((analysis) => {
   console.log(`Markdown saved to ${outputName}.`);
 
 });
-
-
-
-function createStringOfArgumentNames(argumentsArray) {
-  let argumentNames = [];
-  for(let argument of argumentsArray) {
-    argumentNames.push(argument.name);
-  }
-  let argumentsString = argumentNames.join(', ');
-  return argumentsString;
-}
