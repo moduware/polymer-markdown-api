@@ -25,7 +25,7 @@ describe('Polymer Markdown Generator', function() {
   context('createStringOfArguments', function(){
     it('should have a createStringOfArgumentNames Method', function () {
       expect(typeof generator).to.be.equal('object');
-      expect(typeof generator._createStringOfArgumentsNames).to.be.equal('function');
+      expect(typeof generator._createStringOfArgumentNames).to.be.equal('function');
     });
 
     it('takes an array and returns comma seperated string of names');
