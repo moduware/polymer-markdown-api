@@ -3,8 +3,8 @@ const VERSION = '1.0.0';
 const {Analyzer, FSUrlLoader} = require('polymer-analyzer');
 const program = require('commander');
 const fs = require('fs');
-const methodFormatter = require('./method-formatter');
-const propertyFormatter = require('./property-formatter');
+const methodFormatter = require('./js/method-formatter');
+const propertyFormatter = require('./js/property-formatter');
 
 const baseUrl = process.cwd(); // gets the path of the current directory
 
