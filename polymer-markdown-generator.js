@@ -32,7 +32,7 @@ const elementId = program.elementName || targetFileBaseName.substr(0, targetFile
 const outputName = program.outputFile || 'REFERENCE.md';
 
 // This is the top part of our md file
-console.log(`Markdown Generator ????? ${VERSION}\n`);
+console.log(`Markdown Generator ${VERSION}\n`);
 console.log(`Processing <${targetFile}>\n`);
 
 const analyzer = new Analyzer({
