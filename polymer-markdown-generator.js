@@ -5,15 +5,13 @@ const program = require('commander');
 const fs = require('fs');
 const methodFormatter = require('./method-formatter');
 const propertyFormatter = require('./property-formatter');
-const createStringOfArgumentNames = require('./create-string-of-argument-names');
 
 const baseUrl = process.cwd(); // gets the path of the current directory
 
-module.exports = {
-  _methodFormatter: methodFormatter,
-  _propertyFormatter: propertyFormatter,
-  _createStringOfArgumentNames: createStringOfArgumentNames
-};
+// module.exports = {
+//   _methodFormatter: methodFormatter,
+//   _propertyFormatter: propertyFormatter
+// };
 
 program
 .version(VERSION)
