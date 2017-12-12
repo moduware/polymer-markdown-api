@@ -6,7 +6,8 @@ function methodFormatter(element) {
 
   for (const [name, method] of element.methods) {
     let argumentNames = createStringOfArgumentNames(method.params);
-    markdown += `**${method.name}(${argumentNames})**: _${method.return.type}_ \n\n${method.description}\n\n\n`;
+
+    markdown += `**${method.name}(${argumentNames})**: ${typeof (method.return) == 'undefined' ? '' : ' = \`\`' + method.return.type + '\`\`'} \n\n${method.description}\n\n\n`;
   }
   return markdown;
 }
