@@ -1,3 +1,5 @@
+const createStringOfArgumentNames = require('./create-string-of-argument-names');
+
 function methodFormatter(element) {
   let markdown = '';
   markdown += '## Methods\n\n';
