@@ -14,7 +14,6 @@ describe('propertyFormatter', function () {
   let morphButton = {
     properties: propertyMap
   };
-  console.log('propertyMap', propertyFormatter(morphButton));
   
   it('formats property inside element into markdown', function() {
     let markdownOutput = propertyFormatter(morphButton);
