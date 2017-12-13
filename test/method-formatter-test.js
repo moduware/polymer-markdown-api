@@ -4,7 +4,7 @@ const expect = chai.expect;
 
 describe('methodFormatter', function() {
   let methodsMap = new Map();
-  // methodsMap.set('first', []);
+  
   methodsMap.set('colorAssigned', 
     {
       name: 'colorAssigned',
@@ -32,7 +32,7 @@ describe('methodFormatter', function() {
   
   it('formats methods inside element', function() {
     let result = methodFormatter(morphButton)
-    console.log(result);
+
     expect(result).to.include('## Methods');
     expect(result).to.include('**colorAssigned(oldValue, newValue)**');
     expect(result).to.include('function will fire a console.warn message');
