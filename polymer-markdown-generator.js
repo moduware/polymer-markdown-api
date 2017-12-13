@@ -6,12 +6,7 @@ const fs = require('fs');
 const methodFormatter = require('./js/method-formatter');
 const propertyFormatter = require('./js/property-formatter');
 
-const baseUrl = process.cwd(); // gets the path of the current directory
-
-// module.exports = {
-//   _methodFormatter: methodFormatter,
-//   _propertyFormatter: propertyFormatter
-// };
+const baseUrl = process.cwd();
 
 program
 .version(VERSION)
@@ -25,20 +20,18 @@ if (program.args.length != 1) {
   return;
 }
 
-const targetFile = program.args[0];
+const targetFile = program.args[0]; // this gets the file argument to be parse
 const targetFileBaseName = targetFile.replace(/^.*[\\\/]/, '');
 const targetFileDir = targetFile.replace(targetFileBaseName, '');
 const elementId = program.elementName || targetFileBaseName.substr(0, targetFileBaseName.lastIndexOf('.'));
-const outputName = program.outputFile || 'REFERENCE.md';
+const outputName = program.outputFile || 'REFERENCE.md'; // default filename if no output file is passed
 
-// This is the top part of our md file
-console.log(`Markdown Generator ${VERSION}\n`);
+console.log(`Markdown Generator ${VERSION}\n`); // This is the top part of our md file
 console.log(`Processing <${targetFile}>\n`);
 
 const analyzer = new Analyzer({
   urlLoader: new FSUrlLoader(targetFileDir),
 });
-
 
 analyzer.analyze([targetFileBaseName]).then((analysis) => {
   let markdownOutput = '';
@@ -47,12 +40,11 @@ analyzer.analyze([targetFileBaseName]).then((analysis) => {
   
   if (!ElementClass) {
     console.log(`File don't define or import ${elementId}.`);
-    return;
+    return; // if no element found with id = elementId it will exit
   }
 
-  markdownOutput += propertyFormatter(ElementClass);
-  markdownOutput += methodFormatter(ElementClass);
-  fs.writeFileSync(outputName, markdownOutput);
+  markdownOutput += propertyFormatter(ElementClass); // adds property markdown to output
+  markdownOutput += methodFormatter(ElementClass); // adds method markdown to output
+  fs.writeFileSync(outputName, markdownOutput); // writes to file the markdown output
   console.log(`Markdown saved to ${outputName}.`);
-
 });
