@@ -14,11 +14,11 @@ describe('propertyFormatter', function () {
   let morphButton = {
     properties: propertyMap
   };
-  
+
   it('formats property inside element into markdown', function() {
     let markdownOutput = propertyFormatter(morphButton);
 
-    expect(markdownOutput).to.include('**big**: _boolean_');
+    expect(markdownOutput).to.be.a('string').that.includes('**big**: _boolean_');
     expect(markdownOutput).to.include('Common for iOS and Android Platform');
   });
 });
