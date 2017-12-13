@@ -8,6 +8,7 @@ const propertyFormatter = require('./js/property-formatter');
 
 const baseUrl = process.cwd();
 
+// this is from commander setting up the options or flags and its description
 program
 .version(VERSION)
 .usage('[options] <file>')
@@ -15,7 +16,7 @@ program
 .option('-o, --output-file <file>', 'Filename to save result')
 .parse(process.argv);
 
-if (program.args.length != 1) {
+if (program.args.length != 1) { // this program will terminate when no file is passed in
   console.log('Single file to process must be specified');
   return;
 }
@@ -29,7 +30,7 @@ const outputName = program.outputFile || 'REFERENCE.md'; // default filename if 
 console.log(`Markdown Generator ${VERSION}\n`); // This is the top part of our md file
 console.log(`Processing <${targetFile}>\n`);
 
-const analyzer = new Analyzer({
+const analyzer = new Analyzer({ // this is coming from Polymer Analyzer
   urlLoader: new FSUrlLoader(targetFileDir),
 });
 
