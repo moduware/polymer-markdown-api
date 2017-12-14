@@ -3,7 +3,7 @@ const generator = require('../polymer-markdown-generator.js');
 const exec = require('child_process').exec;
 
 let errorWhenNoFilePass = "Single file to process must be specified";
-let errotWhenFileDoesNotContainElement = 'File don\'t define or import somefile.';
+let errotWhenFileDoesNotContainElement = 'File don\'t define or import sample-file.';
 
 describe('Polymer Markdown Generator', function() {
   
@@ -24,8 +24,8 @@ describe('Polymer Markdown Generator', function() {
   context('when file passed has no polymer element', function () {
     let outputString;
     before(function (done) {
-      const child = exec('node polymer-markdown-generator.js somefile.html', function (err, stdout, stderr) {
-        outputString = stdout.replace(/(\r\n|\n|\r)/gm, ""); // strip \n character and leave only text
+      const child = exec('node polymer-markdown-generator.js sample-file.html', function (err, stdout, stderr) {
+        outputString = stdout;
         done();
       });
 
@@ -41,7 +41,6 @@ describe('Polymer Markdown Generator', function() {
     before(function(done) {
       exec('node polymer-markdown-generator.js ../polymer-markdown-generator/test/data/morph-button.html', function (err, stdout, stderr) {
         outputString = stdout;
-        // outputString = stdout.replace(/(\r\n|\n|\r)/gm, "");
         done();
       });
     });
@@ -81,5 +80,35 @@ describe('Polymer Markdown Generator', function() {
     });
 
   });
-  context.skip('should processed --flags correctly');
+
+  context('Should process --element-name flags correctly', function() {
+    let outputString;
+    before(function (done) {
+      exec('node polymer-markdown-generator.js ../polymer-markdown-generator/test/data/different-morph-button.html', function (err, stdout, stderr) {
+        outputString = stdout;
+        done();
+      });
+    });
+
+    it('fails when filename is different from element name', function () {
+      expect(outputString).to.not.include('REFERENCE.md');
+      expect(outputString).to.include('File don\'t define or import different-morph-button.');
+    });
+  });
+
+  context('Should process --element-name flags correctly', function () {
+    let outputString;
+    before(function (done) {
+      exec('node polymer-markdown-generator.js ../polymer-markdown-generator/test/data/different-morph-button.html --element-name morph-button', function (err, stdout, stderr) {
+        outputString = stdout;
+        done();
+      });
+    });
+
+    it('uses --element-name flag to capture the correct element name', function () {
+      expect(outputString).to.include('REFERENCE.md');
+      expect(outputString).to.not.include('File don\'t define or import different-morph-button.');
+    });
+  });
+
 });
