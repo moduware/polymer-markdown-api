@@ -1,3 +1,10 @@
+
+/**
+ * createStringOfArgumentNames - Converts arguments' name to a string.
+ *
+ * @param  {Array} argumentsArray array of arguments
+ * @return {String}               returns to string of argument names
+ */
 function createStringOfArgumentNames(argumentsArray) {
   let argumentNames = [];
   for (let argument of argumentsArray) {
