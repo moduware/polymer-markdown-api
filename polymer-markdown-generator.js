@@ -1,5 +1,5 @@
 #! /usr/bin/env node
-const VERSION = '1.0.0';
+const VERSION = '1.0.1';
 const {Analyzer, FSUrlLoader} = require('polymer-analyzer');
 const program = require('commander');
 const fs = require('fs');
